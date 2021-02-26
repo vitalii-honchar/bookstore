@@ -10,6 +10,11 @@ data class Book(
     val name: String? = null,
     val description: String? = null,
 
-    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id")
+    val author: Author? = null,
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "book_id")
     val tags: Set<BookTag>? = null
 )

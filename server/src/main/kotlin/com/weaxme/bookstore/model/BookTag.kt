@@ -13,8 +13,6 @@ data class BookTag(
 
     val name: String? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id")
-    @JsonIgnore
-    val book: Book? = null
+    @Column(name = "book_id")
+    val bookId: Int? = null
 )
