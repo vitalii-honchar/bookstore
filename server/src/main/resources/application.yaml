@@ -11,6 +11,8 @@ spring:
     hibernate:
       ddl-auto: update
 
+bookstore:
+  limit-per-page: 25
 
 logging:
   level:
