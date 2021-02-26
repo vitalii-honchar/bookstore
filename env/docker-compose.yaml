@@ -10,6 +10,7 @@ services:
       MYSQL_ROOT_PASSWORD: my-secret-pw
     volumes:
       - ./mysql/01_bookstore_schema.sql:/docker-entrypoint-initdb.d/01_bookstore_schema.sql
+      - ./mysql/02_bookstore_data.sql:/docker-entrypoint-initdb.d/02_bookstore_data.sql
     ports:
       - "3306:3306"
     ulimits:
