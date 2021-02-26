@@ -3,11 +3,13 @@ version: '3.9'
 services:
 
   mysql5:
-    image: mysql:5.6.37
+    image: mysql:8.0.23
     restart: always
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max_connections=600
     environment:
       MYSQL_ROOT_PASSWORD: my-secret-pw
+    volumes:
+      - ./mysql/01_bookstore_schema.sql:/docker-entrypoint-initdb.d/01_bookstore_schema.sql
     ports:
       - "3306:3306"
     ulimits:

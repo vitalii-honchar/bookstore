@@ -3,6 +3,13 @@ spring:
     name: bookstore
   webflux:
     base-path: /api
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/bookstore
+    username: root
+    password: my-secret-pw
+  jpa:
+    hibernate:
+      ddl-auto: update
 
 
 logging:

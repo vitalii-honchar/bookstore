@@ -1,6 +1,5 @@
 package com.weaxme.bookstore.model
 
-import java.time.Instant
 import javax.persistence.*
 
 @Entity
@@ -11,7 +10,6 @@ data class Book(
     val name: String? = null,
     val description: String? = null,
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "book_tag", joinColumns = [JoinColumn(name = "book_id")])
-    val tags: Set<String>? = null
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+    val tags: Set<BookTag>? = null
 )
