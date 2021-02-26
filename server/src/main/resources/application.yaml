@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: bookstore
+  webflux:
+    base-path: /api
+
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          TRACE

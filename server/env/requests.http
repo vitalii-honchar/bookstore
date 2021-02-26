@@ -1,0 +1,13 @@
+
+GET http://localhost:8080/api/books
+Authorization: Basic user user
+###
+
+
+GET http://localhost:8080/api/books/2
+Authorization: Basic user user
+###
+
+GET http://localhost:8080/api/books/
+Authorization: Basic user user
+###
