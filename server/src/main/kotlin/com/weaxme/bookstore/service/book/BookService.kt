@@ -5,12 +5,13 @@ import com.weaxme.bookstore.repository.BookRepository
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import reactor.core.publisher.Mono
+import javax.persistence.EntityManager
 
 @Service
-class BookService(
-    private val bookRepository: BookRepository
-) {
+class BookService(private val bookRepository: BookRepository) {
+
     companion object {
         @JvmStatic
         private val LOG = LoggerFactory.getLogger(BookService::class.java)!!

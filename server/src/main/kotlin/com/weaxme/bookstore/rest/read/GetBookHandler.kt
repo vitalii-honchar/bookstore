@@ -28,17 +28,17 @@ class GetBookHandler(
         val page = request.queryParamOrNull("page")?.toInt() ?: 0
         return Mono.fromCallable {
             bookRepository.findAll(PageRequest.of(page, bookstoreProperties.limitPerPage, ASC, Book::id.name))
-        }.doOnNext { LOG.info("Get books: page = {}, response = {}", page, it) }
+        }.doOnNext { LOG.info("[HTTP] Get books: page = {}, response = {}", page, it) }
             .flatMap {
                 ok().body(Mono.just(it), Book::class.java)
-            }.doOnSubscribe { LOG.info("Get books: page = {}", page) }
+            }.doOnSubscribe { LOG.info("[HTTP] Get books: page = {}", page) }
     }
 
     fun getBookById(request: ServerRequest): Mono<ServerResponse> {
         val id = request.pathVariable("id").toInt()
         return Mono.fromCallable { bookRepository.findById(id) }
-            .doOnNext { LOG.info("Get book by id: id = {}, response = {}", id, it) }
+            .doOnNext { LOG.info("[HTTP] Get book by id: id = {}, response = {}", id, it) }
             .flatMap { ok().body(Mono.just(it), Book::class.java) }
-            .doOnSubscribe { LOG.info("Get book by id: id = {}", id) }
+            .doOnSubscribe { LOG.info("[HTTP] Get book by id: id = {}", id) }
     }
 }

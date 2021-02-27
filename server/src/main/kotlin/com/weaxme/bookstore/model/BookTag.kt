@@ -7,7 +7,7 @@ import javax.persistence.*
 @Table(name = "book_tag")
 data class BookTag(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     val id: Int? = null,
 

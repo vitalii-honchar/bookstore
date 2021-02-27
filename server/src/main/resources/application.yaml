@@ -8,8 +8,11 @@ spring:
     username: root
     password: my-secret-pw
   jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 
 bookstore:
   limit-per-page: 25

@@ -15,3 +15,34 @@ Authorization: Basic user user
 GET http://localhost:8080/api/authors/1
 Authorization: Basic user user
 ###
+
+PUT http://localhost:8080/api/authors
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "firstName": "First Name",
+  "lastName": "Last Name"
+}
+###
+
+PUT http://localhost:8080/api/books/
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "name": "Test",
+  "description": "Test description",
+  "authorId": 1
+}
+###
+
+POST http://localhost:8080/api/books/1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Test 23"
+}
+###

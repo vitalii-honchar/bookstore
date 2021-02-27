@@ -27,18 +27,18 @@ class GetAuthorHandler(
         val page = request.queryParamOrNull("page")?.toInt() ?: 0
         return Mono.fromCallable {
             authorRepository.findAll(PageRequest.of(page, bookstoreProperties.limitPerPage, ASC, Author::id.name))
-        }.doOnNext { LOG.info("Get authors: page = {}, response = {}", page, it) }
+        }.doOnNext { LOG.info("[HTTP] Get authors: page = {}, response = {}", page, it) }
             .flatMap {
                 ok()
                     .body(Mono.just(it), Author::class.java)
-            }.doOnSubscribe { LOG.info("Get authors: page = {}", page) }
+            }.doOnSubscribe { LOG.info("[HTTP] Get authors: page = {}", page) }
     }
 
     fun getAuthorById(request: ServerRequest): Mono<ServerResponse> {
         val id = request.pathVariable("id").toInt()
         return Mono.fromCallable { authorRepository.findById(id) }
-            .doOnNext { LOG.info("Get author by id: id = {}, response = {}", id, it) }
+            .doOnNext { LOG.info("[HTTP] Get author by id: id = {}, response = {}", id, it) }
             .flatMap { ok().body(Mono.just(it), Author::class.java) }
-            .doOnSubscribe { LOG.info("Get author by id: id = {}", id) }
+            .doOnSubscribe { LOG.info("[HTTP] Get author by id: id = {}", id) }
     }
 }
