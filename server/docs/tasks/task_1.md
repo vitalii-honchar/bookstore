@@ -46,5 +46,4 @@ Please create a bug report.
 2. Try add new tag for created book. What happens wrong? Please create a bug report.
 3. Try create a new book without author id. You can't create book without author. What happens wrong? Please create a bug report.
 4. Try edit exists author. What happens wrong? 
-5. Read how write feature requests and bug reports: [Writing feature requests and bug reports that get results
-   ](https://ddbeck.com/bug-reports-that-get-results/)
+5. Read how write feature requests and bug reports: [Writing feature requests and bug reports that get results](https://ddbeck.com/bug-reports-that-get-results/)
