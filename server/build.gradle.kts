@@ -1,16 +1,20 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.bundling.BootJar
+import com.bmuschko.gradle.docker.tasks.image.*
 
 plugins {
     id("org.springframework.boot") version "2.4.3"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    id("com.bmuschko.docker-remote-api") version "6.7.0"
     kotlin("jvm") version "1.4.30"
     kotlin("plugin.spring") version "1.4.30"
     kotlin("plugin.jpa") version "1.4.30"
 }
 
+val dockerImageName = "weaxme/bookstore"
+
 group = "com.weaxme"
-version = "0.0.1-SNAPSHOT"
+version = "0.1.1"
 java.sourceCompatibility = JavaVersion.VERSION_14
 
 springBoot {
@@ -19,6 +23,7 @@ springBoot {
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
@@ -56,4 +61,13 @@ tasks {
         useJUnitPlatform()
     }
 
+    val dockerBuild = create("dockerBuild", DockerBuildImage::class) {
+        inputDir.set(file("."))
+        images.add("$dockerImageName:$version")
+    }
+
+    create("dockerPush", DockerPushImage::class) {
+        dependsOn(dockerBuild)
+        images.set(dockerBuild.images)
+    }
 }
