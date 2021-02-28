@@ -14,7 +14,7 @@ plugins {
 val dockerImageName = "weaxme/bookstore"
 
 group = "com.weaxme"
-version = "1.0.0"
+version = "2.0.0"
 java.sourceCompatibility = JavaVersion.VERSION_14
 
 springBoot {
