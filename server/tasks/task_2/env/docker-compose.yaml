@@ -24,7 +24,7 @@ services:
     stop_grace_period: 30s
 
   bookstore:
-    image: weaxme/bookstore:1.0.0
+    image: weaxme/bookstore:2.0.0
     restart: always
     environment:
       MYSQL_HOST: mysql
