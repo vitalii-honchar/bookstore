@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     id("org.springframework.boot") version "2.4.3"
@@ -13,9 +14,8 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_14
 
 springBoot {
-    mainClassName = "com.weaxme.bookstore.BookstoreApplicationKt"
+    mainClass.set("com.weaxme.bookstore.BookstoreApplicationKt")
 }
-
 
 repositories {
     mavenCentral()
@@ -41,6 +41,10 @@ tasks {
             freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = "14"
         }
+    }
+
+    withType<BootJar> {
+        archiveClassifier.set("boot")
     }
 
     withType<JavaCompile> {
