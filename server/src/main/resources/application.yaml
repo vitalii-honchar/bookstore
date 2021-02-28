@@ -5,8 +5,8 @@ spring:
     base-path: /api
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/bookstore
-    username: root
-    password: my-secret-pw
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:my-secret-pw}
   jpa:
     properties:
       hibernate:
